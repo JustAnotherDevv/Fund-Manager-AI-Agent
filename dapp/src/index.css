@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 195 5% 10%;
+    --foreground: 144 80% 90%;
+
+    --card: 195 5% 15%;
+    --card-foreground: 144 80% 90%;
+
+    --popover: 195 5% 15%;
+    --popover-foreground: 144 80% 90%;
+
+    --primary: 144 70% 50%;
+    --primary-foreground: 195 5% 10%;
+
+    --secondary: 195 70% 50%;
+    --secondary-foreground: 195 5% 10%;
+
+    --muted: 195 5% 20%;
+    --muted-foreground: 144 80% 70%;
+
+    --accent: 144 70% 50%;
+    --accent-foreground: 195 5% 10%;
+
+    --destructive: 0 80% 50%;
+    --destructive-foreground: 144 80% 90%;
+
+    --border: 144 70% 50%;
+    --input: 144 70% 50%;
+    --ring: 144 70% 50%;
+
+    --radius: 0px;
+  }
+
+  .dark {
+    --background: 195 5% 10%;
+    --foreground: 144 80% 90%;
+
+    --card: 195 5% 15%;
+    --card-foreground: 144 80% 90%;
+
+    --popover: 195 5% 15%;
+    --popover-foreground: 144 80% 90%;
+
+    --primary: 144 70% 50%;
+    --primary-foreground: 195 5% 10%;
+
+    --secondary: 195 70% 50%;
+    --secondary-foreground: 195 5% 10%;
+
+    --muted: 195 5% 20%;
+    --muted-foreground: 144 80% 70%;
+
+    --accent: 144 70% 50%;
+    --accent-foreground: 195 5% 10%;
+
+    --destructive: 0 80% 50%;
+    --destructive-foreground: 144 80% 90%;
+
+    --border: 144 70% 50%;
+    --input: 144 70% 50%;
+    --ring: 144 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    font-family: "VT323", monospace;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Retro pixel borders */
+  .shadcn-retro {
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.8);
+    border: 2px solid theme("colors.border");
+    transition: none;
+  }
+
+  /* Button styles */
+  .btn,
+  .button,
+  button[class*="Button"],
+  [class*="button"] {
+    @apply shadcn-retro;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Card styles */
+  .card,
+  [class*="Card"] {
+    @apply shadcn-retro;
+    background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.05) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.05) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 4px 4px;
+  }
+
+  /* Input styles */
+  .input,
+  [class*="Input"] {
+    @apply shadcn-retro;
+    background-color: theme("colors.background");
+  }
+
+  /* Dialog styles */
+  .dialog,
+  [class*="Dialog"] {
+    @apply shadcn-retro;
+  }
+
+  /* Add a scan line effect */
+  .scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 100% 2px;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  /* CRT screen effect */
+  .crt-effect {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .crt-effect::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.15) 50%
+    );
+    background-size: 100% 2px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .crt-effect::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+  }
+
+  @keyframes flicker {
+    0% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+}
