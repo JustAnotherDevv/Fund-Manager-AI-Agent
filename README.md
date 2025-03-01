@@ -2,6 +2,40 @@
 
 AI-powered hedge fund manager for blockchain assets that automatically manages funds based on AI-generated investment strategies.
 
+```mermaid
+flowchart TD
+    User[User/Investor] -->|Creates| Registry[Fund Registry Contract]
+    Registry -->|Creates| Fund[AI Fund Contract]
+    Fund -->|Managed by| AIManager[AI Manager Contract]
+
+    subgraph "Blockchain Layer"
+        Registry
+        Fund
+        AIManager
+    end
+
+    subgraph "Backend System"
+        Agent[Agent Service] -->|Monitors| Fund
+        Agent -->|Calls| AIService[AI Strategy Service]
+        Agent -->|Executes| Strategy[Strategy]
+        DB[(SQLite Database)] <-->|Stores| Agent
+    end
+
+    AIService -->|Generates| Strategy
+    Strategy -->|Applied to| Fund
+
+    User -->|Deposits/Withdraws| Fund
+    User -->|Selects| AIManager
+
+    classDef contracts fill:#f9f,stroke:#333,stroke-width:2px
+    classDef backend fill:#bbf,stroke:#333,stroke-width:2px
+    classDef user fill:#bfb,stroke:#333,stroke-width:2px
+
+    class Registry,Fund,AIManager contracts
+    class Agent,AIService,Strategy,DB backend
+    class User user
+```
+
 ## Features
 
 - Monitors blockchain for new funds assigned to managed AI strategies
