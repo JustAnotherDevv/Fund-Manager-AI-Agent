@@ -1,0 +1,40 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database files
+data/
+*.db
+*.db-journal
+
+# Logs
+logs/
+*.log
+
+# Build output
+dist/
+build/
+
+# Coverage output
+coverage/
+
+# Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Private files
+*.pem
+*.key
