@@ -59,17 +59,17 @@ async function main() {
   ]);
   const aggressiveManager = await deployContract("BaseAIManager", [
     registry.target,
-    "Conservative AI Manager",
-    "Low-risk strategy focused on capital preservation",
-    "Primarily invests in stablecoins and blue-chip tokens with minimal volatility",
+    "Aggressive AI Manager",
+    "High-risk high-reward strategy seeking maximum returns",
+    "Utilizes leverage and invests in volatile assets to maximize potential returns",
     supportedTokens,
   ]);
 
   console.log("\nRegistering managers with registry...");
   await registry.registerAIManager(
-    "Aggressive AI Manager",
-    "High-risk high-reward strategy seeking maximum returns",
-    "Utilizes leverage and invests in volatile assets to maximize potential returns",
+    "Conservative AI Manager",
+    "Low-risk strategy focused on capital preservation",
+    "Primarily invests in stablecoins and blue-chip tokens with minimal volatility",
     conservativeManager.target,
     supportedTokens
   );
